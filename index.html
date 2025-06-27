@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyIQAI – Reinventando la educación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    :root{
+      --primary:#0d47a1;
+      --secondary:#1976d2;
+      --tertiary:#00b0ff;
+      --light:#e3f2fd;
+      --dark:#0b1b3f;
+      --radius:1.3rem;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+    body{background:var(--light);color:var(--dark);} img{max-width:100%;display:block;}
+
+    /* NAV */
+    nav{position:fixed;width:100%;top:0;left:0;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);box-shadow:0 2px 8px rgba(0,0,0,.05);z-index:999;}
+    .logo-group{display:flex;align-items:center;gap:.6rem;} .logo-img{height:40px;} .logo-text{font-size:1.6rem;font-weight:800;color:var(--primary);}
+    .menu{display:flex;gap:1.6rem;list-style:none;} .menu a{position:relative;color:var(--dark);text-decoration:none;font-weight:500;} .menu a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:3px;background:var(--primary);transition:.3s;} .menu a:hover::after{width:100%;}
+    .hamburger{display:none;font-size:1.9rem;color:var(--dark);cursor:pointer;}
+    @media(max-width:800px){.menu{display:none;flex-direction:column;position:absolute;top:100%;right:0;background:#fff;padding:1rem 1.4rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.1);} .menu.show{display:flex;} .hamburger{display:block;}}
+
+    /* HERO */
+    .hero{height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;position:relative;color:#fff;background:url('https://images.unsplash.com/photo-1600195077078-4512e67b180e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,71,161,.9) 0%,rgba(0,176,255,.85) 100%);}    
+    .hero-content{position:relative;z-index:2;max-width:900px;padding:0 1rem;}
+    .hero h1{font-size:clamp(2.4rem,4vw,4rem);font-weight:800;line-height:1.15;margin-bottom:1rem;}
+    .hero p{font-size:clamp(1rem,2vw,1.3rem);margin-bottom:2.5rem;}
+    .btn-primary{display:inline-block;padding:1rem 2.4rem;font-weight:700;font-size:1rem;color:var(--primary);background:#fff;border:none;border-radius:50px;overflow:hidden;position:relative;transition:.35s;}
+    .btn-primary::after{content:"";position:absolute;inset:0;background:var(--tertiary);transform:translateX(-100%);transition:.35s;z-index:-1;}
+    .btn-primary:hover{color:#fff;} .btn-primary:hover::after{transform:translateX(0);}
+
+    /* Sections */
+    section{padding:6rem 8%;}
+    .section-title{text-align:center;font-size:2.4rem;font-weight:800;margin-bottom:4rem;color:var(--primary);text-transform:uppercase;letter-spacing:.03em;}
+
+    /* Solution grid */
+    .solutions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:3rem;}
+    .sol-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 4px 14px rgba(0,0,0,.07);text-align:center;transition:.35s;} .sol-card:hover{transform:translateY(-6px);} .sol-card i{font-size:2.5rem;color:var(--secondary);margin-bottom:1rem;}
+    .sol-card h4{font-size:1.15rem;margin-bottom:.5rem;} .sol-card p{font-size:.93rem;line-height:1.5;}
+
+    /* How works */
+    .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2.5rem;} .how-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 4px 14px rgba(0,0,0,.07);text-align:center;transition:.35s;} .how-card:hover{transform:translateY(-6px);} .how-card i{font-size:2.5rem;color:var(--secondary);margin-bottom:1rem;}
+
+    /* Team */
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem;align-items:start;}
+    .member{background:#fff;padding:2rem;border-radius:var(--radius);text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.07);} .member img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;} .member h4{font-size:1.2rem;margin-bottom:.3rem;color:var(--primary);} .member span{font-size:.9rem;color:var(--secondary);} .member p{font-size:.85rem;margin-top:.7rem;line-height:1.4;}
+
+    /* Impact & Licenses */
+    .impact-wrapper{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;margin-top:4rem;} .counter{flex:1 1 220px;background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 4px 14px rgba(0,0,0,.07);text-align:center;} .counter h3{font-size:2.6rem;font-weight:800;color:var(--secondary);} .counter span{font-size:1rem;}
+    .license-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3rem;} .license{background:#fff;padding:3rem 2rem;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,.07);text-align:center;} .tier{margin-bottom:2rem;padding:1.7rem;border:2px solid var(--tertiary);border-radius:var(--radius);} .price{font-size:2rem;font-weight:800;color:var(--secondary);} .tier ul{list-style:none;text-align:left;font-size:.95rem;} .tier li{margin:.4rem 0;position:relative;padding-left:1.2rem;} .tier li::before{content:"\f058";font-family:'Font Awesome 5 Free';font-weight:900;left:0;position:absolute;color:var(--tertiary);}    
+
+    /* Footer */
+    footer{background:var(--dark);color:#fff;text-align:center;padding:3rem 8%;}
+    footer .social{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem;}
+    footer .social a{color:var(--tertiary);font-size:1.4rem;transition:.3s;}
+    footer .social a:hover{color:#fff;}
+    footer p{margin:.3rem 0;}
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo-group"><img src="LOGONUEVO.png" alt="logo" class="logo-img"><span class="logo-text">StudyIQAI</span></div>
+    <div class="hamburger" id="burger"><i class="fas fa-bars"></i></div>
+    <ul class="menu" id="menu"><li><a href="#solucion">Solución</a></li><li><a href="#funciona">Cómo funciona</a></li><li><a href="#impacto">Impacto</a></li><li><a href="#licencias">Planes</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#contacto">Contacto</a></li></ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="inicio"><div class="hero-content"><h1>La primera plataforma dominicana de aprendizaje<br> impulsada por Inteligencia Artificial</h1><p>Conecta datos, personalización y pasión docente para que ningún talento se quede atrás.</p><a href="#licencias" class="btn-primary">Ver planes</a></div></header>
+
+  <!-- SOLUCIÓN -->
+  <section id="solucion"><h2 class="section-title">Nuestra solución</h2><div class="solutions-grid">
+    <div class="sol-card"><i class="fas fa-user-graduate"></i><h4>Aprendizaje personalizado</h4><p>La IA ajusta ritmo y contenidos a cada estudiante.</p></div>
+    <div class="sol-card"><i class="fas fa-school"></i><h4>Estrategias por colegio</h4><p>Dashboards revelan brechas por curso y materia.</p></div>
+    <div class="sol-card"><i class="fas fa-chalkboard-teacher"></i><h4>Docente empoderado</h4><p>Diseña ejercicios y recibe retroalimentación instantánea.</p></div>
+    <div class="sol-card"><i class="fas fa-bolt"></i><h4>Implementación rápida</h4><p>Plataforma en la nube, lista en 48 h sin instalaciones complejas.</p></div>
+  </div></section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section id="funciona"><h2 class="section-title">Cómo funciona StudyIQAI</h2><div class="how-grid">
+      <div class="how-card"><i class="fas fa-database"></i><h4>Integración de datos</h4><p>Sincroniza calificaciones y asistencia desde hojas de cálculo o tu LMS.</p></div>
+      <div class="how-card"><i class="fas fa-brain"></i><h4>Análisis con Mini 4.1 / 4.1</h4><p>Modelos de IA detectan patrones y recomiendan acciones.</p></div>
+      <div class="how-card"><i class="fas fa-route"></i><h4>Ruta adaptativa</h4><p>Cada estudiante recibe contenido y retos acorde a su estilo.</p></div>
+      <div class="how-card"><i class="fas fa-chart-line"></i><h4>Paneles accionables</h4><p>Docentes y directivos visualizan progreso y actúan a tiempo.</p></div>
+  </div>
+  <p style="max-width:900px;margin:3rem auto 0;font-size:1.05rem;text-align:center;line-height:1.6;">
+    <strong>Relevancia para la educación dominicana:</strong> StudyIQAI democratiza una enseñanza de calidad, reduce la deserción y prepara a los jóvenes para la economía digital.
+  </p></section>
+
+  <!-- IMPACTO INICIAL -->
+  <section id="impacto"><h2 class="section-title">Impacto inicial</h2><div class="impact-wrapper"><div class="counter"><h3>60+</h3><span>Estudiantes entrevistados</span></div><div class="counter"><h3>4+</h3><span>Docentes validados</span></div><div class="counter"><h3>1</h3><span>Colegio aliado (CATB)</span></div><div class="counter"><h3>1</h3><span>Comunidad INTEC interesada</span></div></div></section>
+
+  <!-- PLANES -->
+  <section id="licencias"><h2 class="section-title">Planes disponibles</h2><div class="license-container">
+    <div class="license"><h3>Institucional</h3><p class="subtitle">Para colegios</p><div class="tier"><h4>Básico – Mini 4.1</h4><p class="price">RD$138,261/mes</p><ul><li>Ruta adaptativa</li><li>Tutor IA</li><li>Panel curso-materia</li></ul></div><div class="tier"><h4>Full – 4.1</h4><p class="price">RD$161,597/mes</p><ul><li>Todo lo anterior</li><li>Datos accionables</li><li>API privada & soporte 24/7</li></ul></div></div>
+    <div class="license"><h3>Personal</h3><p class="subtitle">Para universitarios</p><div class="tier"><h4>Básico – Mini 4.1</h4><p class="price">RD$918/mes</p><ul><li>Ruta personalizada</li><li>Tutor IA 24/7</li></ul></div><div class="tier"><h4>Full – 4.1</h4><p class="price">RD$1,085/mes</p><ul><li>Todo lo anterior</li><li>Reportes avanzados</li><li>Certificados digitales</li></ul></div></div></div></section>
+
+  <!-- EQUIPO -->
+  <section id="equipo"><h2 class="section-title">Nuestro equipo</h2><div class="team-grid">
+      <div class="member"><img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?auto=format&fit=crop&w=200&q=60" alt="Allison Pérez"><h4>Allison Pérez</h4><span>Fundadora · Estrategia Comercial & Relaciones</span><p>Estudiante de Ingeniería Biomédica con pasión por la innovación educativa.</p></div>
+      <div class="member"><img src="https://images.unsplash.com/photo-1502767089025-6572583495b4?auto=format&fit=crop&w=200&q=60" alt="Vladimir Matos"><h4>Vladimir Matos</h4><span>CTO · Chief Technology Officer</span><p>Egresado de Ingeniería en Software, experto en nubes e IA aplicada.</p></div>
+  </div></section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" style="text-align:center;padding:5rem 8%;background:var(--secondary);color:#fff;">
+    <h2 class="section-title" style="color:#fff;">¡Escríbenos!</h2>
+    <p style="max-width:700px;margin:0 auto 2rem;font-size:1.05rem;line-height:1.6;">Agenda una demo y descubre cómo StudyIQAI puede transformar tu aprendizaje o institución.</p>
+    <p><i class="fas fa-phone"></i> <a href="tel:+18298843098" style="color:#fff;text-decoration:underline;">+1 (829) 884‑3098</a></p>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:StudyIAIRD@gmail.com" style="color:#fff;text-decoration:underline;">StudyIAIRD@gmail.com</a></p>
+    <a class="btn-primary" style="background:#fff;color:var(--primary);margin-top:1.2rem;" href="mailto:StudyIAIRD@gmail.com">Solicitar demo</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="social"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div>
+    <p>© 2025 StudyIQAI. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const burger=document.getElementById('burger'),menu=document.getElementById('menu');burger.addEventListener('click',()=>menu.classList.toggle('show'));
+  </script>
+</body>
+</html>
